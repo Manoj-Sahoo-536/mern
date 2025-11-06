@@ -18,10 +18,24 @@
    - Username: `notesapp` (or your choice)
    - Password: Generate a strong password → **SAVE IT**
    - Click "Create User"
-6. **Network Access**:
-   - Click "Add IP Address"
-   - Click "Allow Access from Anywhere" (0.0.0.0/0)
-   - Confirm
+6. **Network Access** (CRITICAL for Render):
+   
+   **How to find Network Access:**
+   - After logging into MongoDB Atlas, you'll see your dashboard
+   - Look at the **LEFT SIDEBAR** (dark green/black background)
+   - Under the "SECURITY" section, find and click **"Network Access"**
+   - (It's usually between "Database Access" and "Data API")
+   
+   **Add IP Whitelist:**
+   - If you already have an IP address listed, **KEEP IT** (that's for local development)
+   - Click the green **"+ ADD IP ADDRESS"** button (top right)
+   - In the popup, click **"ALLOW ACCESS FROM ANYWHERE"** button
+   - This will auto-fill: `0.0.0.0/0`
+   - Optional: Add comment "Render deployment"
+   - Click **"Confirm"**
+   - You should now see **BOTH** IPs in the list (your local IP + 0.0.0.0/0)
+   - Status should show "Active" for `0.0.0.0/0`
+   - **WAIT 2-3 minutes** for changes to take effect
 7. **Get Connection String**:
    - Click "Connect" → "Connect your application"
    - Copy the connection string (looks like: `mongodb+srv://notesapp:<password>@cluster0...`)
@@ -154,11 +168,15 @@
      - JWT_SECRET (minimum 32 characters)
    - Go to Render Dashboard → Your Service → "Environment" tab to verify
 
-3. **MongoDB Connection Error:**
-   - Verify MongoDB Atlas connection string is correct
-   - Ensure password has no special characters or is URL-encoded
-   - Check MongoDB Network Access allows 0.0.0.0/0
-   - Test connection string format: `mongodb+srv://username:password@cluster.xxxxx.mongodb.net/dbname`
+3. **MongoDB Connection Error ("Could not connect to any servers"):**
+   - **MOST COMMON ISSUE**: IP not whitelisted
+     - Go to MongoDB Atlas → Network Access
+     - Ensure `0.0.0.0/0` is in the IP Access List
+     - If not, click "Add IP Address" → "Allow Access from Anywhere"
+     - Wait 2-3 minutes after adding, then redeploy on Render
+   - Verify MongoDB Atlas connection string is correct in Render environment variables
+   - Check password has no special characters (or is URL-encoded)
+   - Verify connection string format: `mongodb+srv://username:password@cluster.xxxxx.mongodb.net/dbname?retryWrites=true&w=majority`
 
 4. **Service Running but Not Responding:**
    - Wait 30-60 seconds (free tier cold start)
