@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.markdown h1, .markdown h2, .markdown h3 {
+  margin: 12px 0 8px 0;
+  font-weight: 700;
+}
+
+.markdown h1 { font-size: 24px; }
+.markdown h2 { font-size: 20px; }
+.markdown h3 { font-size: 18px; }
+
+.markdown p {
+  margin: 8px 0;
+}
+
+.markdown ul, .markdown ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.markdown code {
+  background: rgba(102,126,234,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.markdown pre {
+  background: rgba(0,0,0,0.2);
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+.markdown pre code {
+  background: none;
+  padding: 0;
+}
+
+.markdown blockquote {
+  border-left: 4px solid rgba(102,126,234,0.5);
+  padding-left: 16px;
+  margin: 12px 0;
+  font-style: italic;
+}
+
+.markdown a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+}
+
+.export-menu button:hover {
+  background: rgba(102,126,234,0.2) !important;
+}
+
+select option {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 10px;
+}
+
+select:focus {
+  outline: none;
+  border-color: rgba(102,126,234,0.5);
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Desktop - Single row header */
+@media (min-width: 769px) {
+  .header-content {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  .top-row {
+    flex-shrink: 0 !important;
+  }
+  
+  .bottom-row {
+    flex: 1 !important;
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Header adjustments */
+  header {
+    position: sticky !important;
+  }
+  
+  .header-content {
+    flex-wrap: wrap !important;
+    padding: 12px 16px !important;
+    gap: 12px !important;
+  }
+  
+  /* Logo and user section stay on same row */
+  .logo {
+    flex: 1 !important;
+    font-size: 16px !important;
+  }
+  
+  .user-section {
+    order: 2 !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Bottom row takes full width and stacks */
+  .bottom-row {
+    width: 100% !important;
+    order: 3 !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .logo {
+    font-size: 18px !important;
+  }
+  
+  .logo-icon {
+    font-size: 24px !important;
+  }
+  
+  .nav-btns {
+    width: 100% !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+  
+  .nav-btn {
+    flex: 1 !important;
+    padding: 10px 8px !important;
+    font-size: 12px !important;
+    text-align: center !important;
+  }
+  
+  /* Search and action row - keep on same line */
+  .search-action-row {
+    width: 100% !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  .search-wrapper {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+  
+  .search-wrapper input {
+    font-size: 13px !important;
+    padding: 10px 10px 10px 36px !important;
+  }
+  
+  .search-icon {
+    left: 10px !important;
+    font-size: 14px !important;
+  }
+  
+  .action-btns {
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .icon-only-btn {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 16px !important;
+  }
+  
+
+  
+  .user-name {
+    display: none !important;
+  }
+  
+  .user-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  
+  /* Content area */
+  .content {
+    padding: 16px 12px !important;
+  }
+  
+  /* Filter bar */
+  .filter-bar {
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+  
+  .filter-section {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .filter-label {
+    margin-bottom: 4px !important;
+    font-size: 12px !important;
+  }
+  
+  .filter-btn {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Force date and sort to stay on same row */
+  .sort-section {
+    flex: 1 !important;
+    min-width: 0 !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+  
+  .sort-section .filter-label {
+    width: auto !important;
+  }
+  
+  .sort-section select {
+    width: 100% !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Container to keep date and sort on same row */
+  .sort-container {
+    display: flex !important;
+    gap: 8px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  /* Grid layout */
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  /* Note cards */
+  .card {
+    padding: 16px !important;
+  }
+  
+  /* Form */
+  form {
+    padding: 20px !important;
+  }
+  
+  form input,
+  form textarea {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-btn {
+    font-size: 11px !important;
+    padding: 8px 4px !important;
+  }
+  
+  .logo {
+    font-size: 16px !important;
+  }
+  
+  .icon-only-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+}
