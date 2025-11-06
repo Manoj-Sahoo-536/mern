@@ -110,15 +110,20 @@
    - Click "Add New" → "Project"
    - Import your GitHub repository
    - Configure:
-     - **Framework Preset**: Create React App
-     - **Root Directory**: `frontend`
-     - Click "Edit" on Environment Variables
+     - **Framework Preset**: Create React App (auto-detected)
+     - **Root Directory**: `Notepad/frontend` (or `frontend` if repo root has frontend folder)
+     - **Build Settings**: Leave as DEFAULT (Vercel auto-fills these)
+       - Build Command: `npm run build` ✓
+       - Output Directory: `build` ✓
+       - Install Command: `npm install` ✓
 
 3. **Add Environment Variable**:
-   ```
-   REACT_APP_API_URL=https://your-backend-url.onrender.com/api
-   ```
-   (Use the Render URL from Step 2, add `/api` at the end)
+   - Scroll down to "Environment Variables" section
+   - Click "Add" or the input field
+   - **Key**: `REACT_APP_API_URL`
+   - **Value**: `https://your-backend-url.onrender.com/api`
+   - (Use the Render URL from Step 2, add `/api` at the end)
+   - Example: `https://notes-backend-abc123.onrender.com/api`
 
 4. Click "Deploy"
 

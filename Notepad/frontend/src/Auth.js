@@ -10,8 +10,9 @@ export default function Auth({ onLogin, theme }) {
     e.preventDefault();
     setError('');
     try {
-      const endpoint = isLogin ? '/api/auth/login' : '/api/auth/signup';
-      const { data } = await axios.post(`http://localhost:5000${endpoint}`, formData);
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+      const endpoint = isLogin ? '/auth/login' : '/auth/signup';
+      const { data } = await axios.post(`${API_URL}${endpoint}`, formData);
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       onLogin(data.user);
